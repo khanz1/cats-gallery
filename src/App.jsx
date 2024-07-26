@@ -16,6 +16,7 @@ function App() {
       return prevCats.concat(data);
     });
   };
+  
   useEffect(() => {
     void fetchData();
   }, []);
@@ -44,7 +45,7 @@ function App() {
           {cats.map((cat) => (
             <div
               key={cat.id}
-              className="lg:col-span-3 sm:col-span-6 col-span-12 hover:filter hover:cursor-pointer grayscale hover:filter-none"
+              className="lg:col-span-3 sm:col-span-6 col-span-12 hover:filter hover:cursor-pointer grayscale"
             >
               <div
                 className="rounded-lg overflow-hidden shadow-lg"
