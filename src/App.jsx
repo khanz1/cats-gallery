@@ -1,55 +1,67 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function App() {
-    const [cats, setCats] = useState([]);
+  const [cats, setCats] = useState([]);
 
-    const fetchData = async () => {
-        const url = new URL('https://api.thecatapi.com');
-        url.pathname = '/v1/images/search';
-        url.searchParams.set('limit', "25");
+  const fetchData = async () => {
+    const url = new URL("https://api.thecatapi.com");
+    url.pathname = "/v1/images/search";
+    url.searchParams.set("limit", "25");
 
-        const response = await fetch(url.toString());
-        const data = await response.json()
+    const response = await fetch(url.toString());
+    const data = await response.json();
 
-        setCats(prevCats => {
-            return prevCats.concat(data);
-        })
-    }
-    useEffect(() => {
-        void fetchData();
-    }, []);
+    setCats((prevCats) => {
+      return prevCats.concat(data);
+    });
+  };
+  useEffect(() => {
+    void fetchData();
+  }, []);
 
   return (
-      <main className="flex min-h-screen flex-col items-center">
-          <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold py-5">Welcome to the Cat Gallery</h1>
-          <InfiniteScroll
-              dataLength={cats.length}
-              next={fetchData}
-              hasMore={true}
-              loader={
-                  <p className="text-center my-5">
-                      <b>Loading...</b>
-                  </p>}
-              endMessage={
-                  <p className="text-center my-5">
-                      <b>Yay! You have seen it all</b>
-                  </p>
-              }
-          >
-              <div className="grid grid-cols-12 gap-3 w-3/4 m-auto">
-                  {cats.map((cat) => (
-                      <div key={cat.id}
-                           className="lg:col-span-3 sm:col-span-6 col-span-12 hover:filter hover:cursor-pointer grayscale hover:filter-none">
-                          <div className="rounded-lg overflow-hidden shadow-lg" style={{height: 200}}>
-                              <img src={cat.url} alt="Cat" className="w-full h-full object-cover"/>
-                          </div>
-                      </div>
-                  ))}
+    <main className="flex min-h-screen flex-col items-center">
+      <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold py-5">
+        Welcome to the Cat Gallery
+      </h1>
+      <InfiniteScroll
+        dataLength={cats.length}
+        next={fetchData}
+        hasMore={true}
+        loader={
+          <p className="text-center my-5">
+            <b>Loading...</b>
+          </p>
+        }
+        endMessage={
+          <p className="text-center my-5">
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <div className="grid grid-cols-12 gap-3 w-3/4 m-auto">
+          {cats.map((cat) => (
+            <div
+              key={cat.id}
+              className="lg:col-span-3 sm:col-span-6 col-span-12 hover:filter hover:cursor-pointer grayscale hover:filter-none"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-lg"
+                style={{ height: 200 }}
+              >
+                <img
+                  src={cat.url}
+                  alt="Cat"
+                  className="w-full h-full object-cover"
+                />
               </div>
-          </InfiniteScroll>
-      </main>
-  )
+            </div>
+          ))}
+        </div>
+      </InfiniteScroll>
+    </main>
+  );
 }
 
-export default App
+export default App;
