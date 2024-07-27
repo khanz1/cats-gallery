@@ -58,11 +58,7 @@ Open your browser and navigate to `http://localhost:5173`.
 
 This project will be deployed on [Jagoan Hosting](https://www.jagoanhosting.com/)
 
-For deployment instructions, follow these steps:
-
-```
-step to deploy
-```
+For deployment instructions, follow [this steps](https://khanz1.notion.site/Application-Deployment-on-Jagoan-Hosting-d6b7dab0f93b4ebda82a923b09c95ebb)
 
 ## Technologies Used
 
