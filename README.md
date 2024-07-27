@@ -2,7 +2,7 @@
 
 Welcome to **Cat Gallery** - a simple and beautiful gallery application showcasing various cat images. This project is built using React and Tailwind CSS.
 
-![Cat Gallery Screenshot](./public/cats-gallery.png)
+![Cat Gallery Screenshot](./public/cat-gallery.png)
 
 ## Table of Contents
 
