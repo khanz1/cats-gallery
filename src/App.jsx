@@ -7,7 +7,7 @@ function App() {
   const fetchData = async () => {
     const url = new URL("https://api.thecatapi.com");
     url.pathname = "/v1/images/search";
-    url.searchParams.set("limit", "25");
+    url.searchParams.set("limit", "10");
 
     const response = await fetch(url.toString());
     const data = await response.json();
@@ -16,13 +16,13 @@ function App() {
       return prevCats.concat(data);
     });
   };
-  
+
   useEffect(() => {
     void fetchData();
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <main className="flex min-h-screen flex-col items-center container-xxl py-10">
       <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold py-5">
         Welcome to the Cat Gallery
       </h1>
@@ -32,7 +32,7 @@ function App() {
         hasMore={true}
         loader={
           <p className="text-center my-5">
-            <b>Loading...</b>
+            <b>Keep scrolling down to see more cats...</b>
           </p>
         }
         endMessage={
@@ -45,7 +45,7 @@ function App() {
           {cats.map((cat) => (
             <div
               key={cat.id}
-              className="lg:col-span-3 sm:col-span-6 col-span-12 hover:filter hover:cursor-pointer grayscale"
+              className="lg:col-span-4 sm:col-span-6 col-span-12 hover:cursor-pointer grayscale hover:filter-none"
             >
               <div
                 className="rounded-lg overflow-hidden shadow-lg"
